@@ -35,23 +35,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         body: SizedBox(
           width: _width,
           height: _height,
-          child: Stack(children: [
-            Positioned(
-                left: null,
-                top: null,
-                right: 0,
-                bottom: 0,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                      height: sizeAnimationController.value,
-                      width: sizeAnimationController.value,
-                      margin: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          color: Colors.green.shade400,
-                          borderRadius: BorderRadius.circular(500))),
-                ))
-          ]),
         ),
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.animation),
