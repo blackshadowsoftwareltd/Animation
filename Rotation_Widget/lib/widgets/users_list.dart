@@ -3,11 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
+import 'dragable_widget.dart';
 
 class CircleUsersList extends StatelessWidget {
   final List<User> users;
   final bool isLeft;
-
   final double rotationAngle, height;
   const CircleUsersList(
       {Key? key,
@@ -34,14 +34,7 @@ class CircleUsersList extends StatelessWidget {
               offset: _offset,
               child: Transform.rotate(
                 angle: isLeft ? -rotationAngle : rotationAngle,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: Image.network(_data.image, fit: BoxFit.cover),
-                  ),
-                ),
+                child: DraggableWidget(user: _data, isLeft: isLeft),
               ),
             ),
           ),
