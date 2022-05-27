@@ -45,28 +45,33 @@ class _RotationgDotedCircleState extends State<RotationgDotedCircle>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: rotationAnimation,
-      builder: (_, child) {
-        final _angle =
-            widget.isLeft ? rotationAnimation.value : -rotationAnimation.value;
-        return Transform.rotate(
-            angle: _angle,
-            child: CircleUsersList(
-                isLeft: widget.isLeft,
-                height: widget.height,
-                users: widget.users,
-                rotationAngle: rotationAnimation.value));
-      },
-      child: const IgnorePointer(child: DotedCircle()),
-    );
+        animation: rotationAnimation,
+        builder: (_, child) {
+          final _angle = widget.isLeft
+              ? rotationAnimation.value
+              : -rotationAnimation.value;
+          return Transform.rotate(
+              angle: _angle,
+              child: Stack(alignment: Alignment.center, children: [
+                ///! Doted border
+                child!,
+
+                ///! CirculeUsersList
+                CircleUsersList(
+                    isLeft: widget.isLeft,
+                    height: widget.height,
+                    users: widget.users,
+                    rotationAngle: rotationAnimation.value)
+              ]));
+        },
+        child: IgnorePointer(child: DottedCircle(height: widget.height)));
   }
 }
 
-// List<Widget>usersList(double angle){
-//   return List.generate(, (index) => null)
-// }
-class DotedCircle extends StatelessWidget {
-  const DotedCircle({Key? key}) : super(key: key);
+class DottedCircle extends StatelessWidget {
+  final double height;
+
+  const DottedCircle({Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +84,11 @@ class DotedCircle extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(
-            height: 5,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(50)),
+            height: height,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.transparent,
+            ),
           ),
         ],
       ),

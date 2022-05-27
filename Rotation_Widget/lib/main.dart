@@ -18,11 +18,11 @@ class Home extends StatelessWidget {
           key: revolvingWidgetKey,
           children: [
             Align(
-              // alignment: Alignment.bottomCenter,
               alignment: Alignment.center,
               child: Transform.translate(
                 offset: Offset(0, _height / 4),
                 child: Stack(
+                  alignment: Alignment.center,
                   children: [
                     RotationgDotedCircle(
                       height: _small * 5.6,
@@ -45,8 +45,8 @@ class Home extends StatelessWidget {
                       users: UserList.users.sublist(5),
                     ),
                     const RotationgDotedCircle(
-                      height: _small,
-                      isLeft: true,
+                      height: _small * .2,
+                      isLeft: false,
                       users: [],
                     ),
                   ],
