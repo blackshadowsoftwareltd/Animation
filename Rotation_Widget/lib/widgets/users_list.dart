@@ -21,11 +21,17 @@ class CircleUsersList extends StatelessWidget {
   Widget build(BuildContext context) {
     final _angle = 2 * pi / users.length;
     final _circleRadius = height / 2;
+    for (var u in users) {
+      final _i = users.indexOf(u);
+      // _offsets.add(Offset(
+      //     _circleRadius * sin(_i * _angle), _circleRadius * cos(_i * _angle)));
+    }
     return Stack(alignment: Alignment.center, children: [
       ...List.generate(users.length, (index) {
         final _data = users[index];
-        final _offset = Offset(_circleRadius * sin(index * _angle),
-            _circleRadius * cos(index * _angle));
+        final _offset = (Offset(_circleRadius * sin(index * _angle),
+            _circleRadius * cos(index * _angle)));
+
         return SizedBox(
           height: MediaQuery.of(context).size.height / 2 + 25,
           width: MediaQuery.of(context).size.width,
@@ -34,7 +40,8 @@ class CircleUsersList extends StatelessWidget {
               offset: _offset,
               child: Transform.rotate(
                 angle: isLeft ? -rotationAngle : rotationAngle,
-                child: DraggableWidget(user: _data, isLeft: isLeft),
+                child:
+                    DraggableWidget(user: _data, isLeft: isLeft, angle: _angle),
               ),
             ),
           ),
