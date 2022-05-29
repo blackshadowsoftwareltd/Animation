@@ -14,46 +14,40 @@ class Home extends StatelessWidget {
     const double _small = 80;
     return Scaffold(
         appBar: AppBar(title: const Text('AppBar')),
-        body: Stack(
-          key: revolvingWidgetKey,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Transform.translate(
-                offset: Offset(0, _height / 4),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    RotationgDotedCircle(
-                      height: _small * 5.6,
-                      isLeft: false,
-                      users: UserList.users.sublist(1),
-                    ),
-                    RotationgDotedCircle(
-                      height: _small * 4.2,
-                      isLeft: true,
-                      users: UserList.users.sublist(2),
-                    ),
-                    RotationgDotedCircle(
-                      height: _small * 2.8,
-                      isLeft: false,
-                      users: UserList.users.sublist(4),
-                    ),
-                    RotationgDotedCircle(
-                      height: _small * 1.4,
-                      isLeft: true,
-                      users: UserList.users.sublist(5),
-                    ),
-                    const RotationgDotedCircle(
-                      height: _small * .2,
-                      isLeft: false,
-                      users: [],
-                    ),
-                  ],
+        body: Stack(key: revolvingWidgetKey, children: [
+          Align(
+            alignment: Alignment.center,
+            child: Transform.translate(
+              offset: Offset(0, _height / 4),
+              child: Stack(alignment: Alignment.center, children: [
+                RotationgDotedCircle(
+                  height: _small * 5.6,
+                  isLeft: false,
+                  users: UserList.users,
                 ),
-              ),
-            )
-          ],
-        ));
+                RotationgDotedCircle(
+                  height: _small * 4.2,
+                  isLeft: true,
+                  users: UserList.users.sublist(2),
+                ),
+                RotationgDotedCircle(
+                  height: _small * 2.8,
+                  isLeft: false,
+                  users: UserList.users.sublist(4),
+                ),
+                RotationgDotedCircle(
+                  height: _small * 1.4,
+                  isLeft: true,
+                  users: UserList.users.sublist(5),
+                ),
+                const RotationgDotedCircle(
+                  height: _small * .2,
+                  isLeft: false,
+                  users: [],
+                ),
+              ]),
+            ),
+          )
+        ]));
   }
 }

@@ -33,13 +33,16 @@ class _DraggableWidgetState extends State<DraggableWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Draggable<User>(
-      onDragUpdate: (details) => setState(() => _offset += details.delta),
-      onDragEnd: (details) => takeUserWidgetBackToItsPosition(),
-      onDraggableCanceled: (velocity, offset) {},
-      feedback: UserImage(user: widget.user).scale(1.1),
-      childWhenDragging: const SizedBox(),
-      child: UserImage(user: widget.user),
+    return Transform.translate(
+      offset: _offset,
+      child: Draggable<User>(
+        onDragUpdate: (details) => setState(() => _offset += details.delta),
+        onDragEnd: (details) => takeUserWidgetBackToItsPosition(),
+        onDraggableCanceled: (velocity, offset) {},
+        feedback: UserImage(user: widget.user).scale(1.1),
+        childWhenDragging: const SizedBox(),
+        child: UserImage(user: widget.user),
+      ),
     );
   }
 
