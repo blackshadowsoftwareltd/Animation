@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rotation_widget/widgets/option_preview.dart';
 
 import '../constant.dart';
 
@@ -27,19 +28,37 @@ class _TopOptionsState extends State<TopOptions> {
             onAccept: (User user) {
               print(user.name);
               print('is thumb up: ${widget.isThumbUp}');
+              Navigator.of(context).push(PageRouteBuilder(
+                  opaque: false,
+                  transitionDuration: const Duration(seconds: 1),
+                  reverseTransitionDuration: const Duration(seconds: 1),
+                  pageBuilder: (context, animation, _) => OptionPreview(
+                      user: user,
+                      isThumbUp: widget.isThumbUp,
+                      animation: animation,
+                      heroKey: widget.title)));
               setState(() => _isTargeted = false);
             },
             onMove: ((data) => setState(() => _isTargeted = true)),
             onLeave: ((_) => setState(() => _isTargeted = false)),
             builder: (BuildContext context, List<Object?> candidateData,
                 List<dynamic> rejectedData) {
-              return Card(
-                  color: Colors.white,
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
+              return Hero(
+                tag: widget.title,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(color: Colors.black45, width: .5),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5,
+                            spreadRadius: 1,
+                            offset: Offset(2, 5))
+                      ]),
                   child: SizedBox(
-                      height: 130,
+                      height: 120,
                       width: 180,
                       child: Column(
                           mainAxisAlignment: _isTargeted
@@ -54,7 +73,9 @@ class _TopOptionsState extends State<TopOptions> {
                                     fontSize: 20,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold))
-                          ])));
+                          ])),
+                ),
+              );
             }));
   }
 }
