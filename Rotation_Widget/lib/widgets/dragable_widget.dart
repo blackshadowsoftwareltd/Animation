@@ -36,6 +36,7 @@ class _DraggableWidgetState extends State<DraggableWidget>
     return Transform.translate(
       offset: _offset,
       child: Draggable<User>(
+        data: widget.user,
         onDragUpdate: (details) => setState(() => _offset += details.delta),
         onDragEnd: (details) => takeUserWidgetBackToItsPosition(),
         onDraggableCanceled: (velocity, offset) {},
