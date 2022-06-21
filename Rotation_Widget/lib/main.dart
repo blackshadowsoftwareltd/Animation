@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rotation_widget/constant.dart';
 import 'package:rotation_widget/widgets/rotationg_doted_circle.dart';
 
+import 'widgets/options.dart';
+
 void main() => runApp(const MaterialApp(home: Home()));
 GlobalKey revolvingWidgetKey = GlobalKey();
 
@@ -15,6 +17,22 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: const Text('AppBar')),
         body: Stack(key: revolvingWidgetKey, children: [
+          Align(
+              alignment: Alignment.topCenter,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    TopOptions(
+                        title: 'Thumb Up',
+                        icon: Icons.thumb_up_alt_outlined,
+                        isThumbUp: true),
+                    TopOptions(
+                        title: 'Thumb Down',
+                        icon: Icons.thumb_down_outlined,
+                        isThumbUp: false)
+                  ])),
+
+          ///?
           Align(
             alignment: Alignment.center,
             child: Transform.translate(
