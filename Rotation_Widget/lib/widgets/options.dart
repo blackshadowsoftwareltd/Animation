@@ -57,23 +57,26 @@ class _TopOptionsState extends State<TopOptions> {
                             spreadRadius: 1,
                             offset: Offset(2, 5))
                       ]),
-                  child: SizedBox(
-                      height: 120,
-                      width: 180,
-                      child: Column(
-                          mainAxisAlignment: _isTargeted
-                              ? MainAxisAlignment.center
-                              : MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(widget.icon,
-                                size: _isTargeted ? 40 : 30,
-                                color: Colors.black54),
-                            Text(widget.title,
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.bold))
-                          ])),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: SizedBox(
+                        height: 120,
+                        width: 180,
+                        child: Column(
+                            mainAxisAlignment: _isTargeted
+                                ? MainAxisAlignment.center
+                                : MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(widget.icon,
+                                  size: _isTargeted ? 40 : 30,
+                                  color: Colors.black54),
+                              Text(widget.title,
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.bold))
+                            ])),
+                  ),
                 ),
               );
             }));

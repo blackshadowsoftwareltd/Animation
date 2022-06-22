@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constant.dart';
+import 'animated_user_avaater.dart';
 
 class OptionPreview extends StatefulWidget {
   const OptionPreview(
@@ -85,12 +86,20 @@ class _OptionPreviewState extends State<OptionPreview>
                             ///?
                             SizedBox(
                               height: 50 + _size.height * .65,
-                              child: Container(
-                                  height: _size.height * .65,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(40)))),
+                              child: Stack(
+                                children: [
+                                  Hero(
+                                    tag: widget.heroKey,
+                                    child: Container(
+                                        height: _size.height * .65,
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.vertical(
+                                                top: Radius.circular(40)))),
+                                  ),
+                                  AnimatedUserAvater(user: widget.user),
+                                ],
+                              ),
                             )
                           ],
                         ),
