@@ -38,8 +38,12 @@ class _SlideUpAnimationState extends State<SlideUpAnimation>
         builder: (context, child) => Opacity(
             opacity: _animation.value,
             child: Transform.translate(
+
+                ///! widget
                 child: widget.widget,
-                offset: Offset(0, (20.0 * (1 - _animation.value))))),
+                offset: Offset(0, (20.0 * (1 - _animation.value) - 40)))),
+
+        ///! widget
         child: widget.widget);
   }
 

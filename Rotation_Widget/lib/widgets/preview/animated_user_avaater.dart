@@ -8,9 +8,9 @@ class AnimatedUserAvater extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: const Offset(0, -50),
+      offset: const Offset(0, -70),
       child: SizedBox(
-        height: 100,
+        height: 140,
 
         ///? Animation
         child: TweenAnimationBuilder(
@@ -18,7 +18,7 @@ class AnimatedUserAvater extends StatelessWidget {
           curve: Curves.easeInOutCirc,
           tween: Tween<double>(begin: 0, end: 1),
           builder: (_, double value, __) {
-            final _radius = 8 * value + 40 * value * value;
+            final _radius = 30 * value + 40 * value * value;
             return Center(
               child: Container(
                 decoration: const BoxDecoration(
