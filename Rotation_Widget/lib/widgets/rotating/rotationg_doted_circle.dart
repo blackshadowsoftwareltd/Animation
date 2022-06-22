@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
+import '../../constant.dart';
 import 'users_list.dart';
 
 class RotationgDotedCircle extends StatefulWidget {

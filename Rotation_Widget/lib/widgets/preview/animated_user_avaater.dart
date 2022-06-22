@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
+import '../../constant.dart';
 
 class AnimatedUserAvater extends StatelessWidget {
   const AnimatedUserAvater({Key? key, required this.user}) : super(key: key);

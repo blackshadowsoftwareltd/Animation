@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
-import 'dragable_widget.dart';
+import '../../constant.dart';
+import '../dragable_widget.dart';
 
 class CircleUsersList extends StatelessWidget {
   final List<User> users;

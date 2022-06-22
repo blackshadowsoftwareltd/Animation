@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rotation_widget/widgets/option_preview.dart';
+import 'package:rotation_widget/widgets/preview/option_preview.dart';
 
 import '../constant.dart';
 

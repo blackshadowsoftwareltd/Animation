@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rotation_widget/constant.dart';
-import 'package:rotation_widget/widgets/rotationg_doted_circle.dart';
 
 import 'widgets/options.dart';
+import 'widgets/rotating/rotationg_doted_circle.dart';
 
 void main() => runApp(const MaterialApp(home: Home()));
 GlobalKey revolvingWidgetKey = GlobalKey();
