@@ -28,8 +28,8 @@ class _OptionPreviewState extends State<OptionPreview>
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-        const Duration(milliseconds: 800), () => _showContent = true);
+    Future.delayed(const Duration(milliseconds: 800),
+        () => setState(() => _showContent = true));
     setState(() {
       _animationController = AnimationController(
           vsync: this, duration: const Duration(seconds: 1));
@@ -85,7 +85,7 @@ class _OptionPreviewState extends State<OptionPreview>
 
                             ///?
                             SizedBox(
-                              height: 50 + _size.height * .65,
+                              height: _size.height * .65,
                               child: Stack(
                                 children: [
                                   Hero(
@@ -97,7 +97,8 @@ class _OptionPreviewState extends State<OptionPreview>
                                             borderRadius: BorderRadius.vertical(
                                                 top: Radius.circular(40)))),
                                   ),
-                                  AnimatedUserAvater(user: widget.user),
+                                  if (_showContent)
+                                    AnimatedUserAvater(user: widget.user),
                                 ],
                               ),
                             )

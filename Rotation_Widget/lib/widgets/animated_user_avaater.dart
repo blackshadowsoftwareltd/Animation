@@ -11,6 +11,8 @@ class AnimatedUserAvater extends StatelessWidget {
       offset: const Offset(0, -50),
       child: SizedBox(
         height: 100,
+
+        ///? Animation
         child: TweenAnimationBuilder(
           duration: const Duration(seconds: 1),
           curve: Curves.easeInOutCirc,
