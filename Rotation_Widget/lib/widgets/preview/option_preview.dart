@@ -3,6 +3,7 @@ import 'package:rotation_widget/widgets/preview/slide_up_animation.dart';
 
 import '../../constant.dart';
 import 'animated_user_avaater.dart';
+import 'bottom_panel/bottom_panel.dart';
 
 class OptionPreview extends StatefulWidget {
   const OptionPreview(
@@ -110,8 +111,11 @@ class _OptionPreviewState extends State<OptionPreview>
                                                   color: Colors.black,
                                                   fontSize: 30,
                                                   fontWeight: FontWeight.bold)),
-                                          initDelay:
-                                              const Duration(milliseconds: 600))
+                                          initDelay: const Duration(
+                                              milliseconds: 600)),
+
+                                      ///? bottom panel widgets
+                                      BottomPanelWidgets()
                                     ],
                                   ),
                               ],
