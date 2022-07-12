@@ -10,40 +10,65 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int newNum = 0;
-  int? oldNum;
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(listen);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.removeListener(listen);
+  }
+
+  void listen() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Counter Animation')),
-        body: Center(
-            child: TweenAnimationBuilder<double>(
-                key: Key(newNum.toString()),
-                tween: Tween<double>(begin: 0, end: 1),
-                duration: const Duration(milliseconds: 300),
-                builder: (_, double value, __) {
-                  return Stack(children: [
-                    if (oldNum != null)
-                      Transform.translate(
-                          offset: Offset(0, 50 * value),
-                          child: Opacity(
-                              opacity: -value + 1,
-                              child: Text(oldNum.toString(), style: style))),
-                    Transform.translate(
-                        offset: Offset(0, -50 * (1 - value)),
-                        child: Opacity(
-                            opacity: value,
-                            child: Text(newNum.toString(), style: style)))
-                  ]);
-                })),
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              oldNum = newNum;
-              newNum++;
-              setState(() {});
-            },
-            child: const Icon(Icons.add)));
+        body: CustomScrollView(
+          controller: controller,
+          slivers: [
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  final itemPositionOffset = index * height;
+                  final difference = controller.offset - itemPositionOffset;
+                  final percent = 1 - (difference / height);
+                  double scale = percent;
+                  if (scale > 1.0) scale = 1.0;
+                  if (scale < 0.0) scale = 0.0;
+                  return Opacity(
+                    opacity: scale,
+                    child: Transform(
+                      transform: Matrix4.identity()..scale(scale, 1),
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        height: height,
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: Colors.green.shade200,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Text('$index', style: style),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                childCount: 20,
+              ),
+            )
+          ],
+        ));
   }
 }
 
+final controller = ScrollController();
+const height = 100.0;
 const style = TextStyle(fontSize: 40);
