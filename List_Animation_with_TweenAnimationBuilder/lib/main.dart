@@ -42,20 +42,23 @@ class _HomeState extends State<Home> {
                   double scale = percent;
                   if (scale > 1.0) scale = 1.0;
                   if (scale < 0.0) scale = 0.0;
-                  return Opacity(
-                    opacity: scale,
-                    child: Transform(
-                      transform: Matrix4.identity()..scale(scale, 1),
-                      alignment: Alignment.center,
-                      child: SizedBox(
-                        height: height,
-                        child: Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: Colors.green.shade200,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Text('$index', style: style),
+                  return Align(
+                    heightFactor: .95,
+                    child: Opacity(
+                      opacity: scale,
+                      child: Transform(
+                        transform: Matrix4.identity()..scale(scale, 1),
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          height: height,
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: Colors.green.shade200,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text('$index', style: style),
+                          ),
                         ),
                       ),
                     ),
